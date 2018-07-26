@@ -1,6 +1,7 @@
+// Modules
 const merge = require("webpack-merge");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-
+// Config Parts
 const parts = require("./webpack.parts");
 const commonConfig = merge([
     {
@@ -9,7 +10,8 @@ const commonConfig = merge([
                 title: "Webpack Development Boilerplate"
             })
         ]
-    }
+    },
+    parts.loadSASS()
 ]);
 const productionConfig = merge([]);
 const developmentConfig = merge([
