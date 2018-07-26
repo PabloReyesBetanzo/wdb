@@ -1,0 +1,19 @@
+{
+  "name": "webpack-development-boilerplate",
+  "version": "1.0.0",
+  "description": "Base configuration for webpack. To use in new proyects.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloReyesBetanzo/wdb.git"
+  },
+  "author": "Pablo Reyes Betanzo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PabloReyesBetanzo/wdb/issues"
+  },
+  "homepage": "https://github.com/PabloReyesBetanzo/wdb#readme"
+}
