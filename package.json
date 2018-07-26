@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/PabloReyesBetanzo/wdb/issues"
   },
-  "homepage": "https://github.com/PabloReyesBetanzo/wdb#readme"
+  "homepage": "https://github.com/PabloReyesBetanzo/wdb#readme",
+  "devDependencies": {
+    "webpack": "^4.16.2",
+    "webpack-cli": "^3.1.0"
+  }
 }
