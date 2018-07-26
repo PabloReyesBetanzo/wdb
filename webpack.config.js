@@ -1,16 +1,28 @@
+const merge = require("webpack-merge");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-module.exports = {
-    devServer: {
-        stats: "errors-only", // Display errors only.
-        host: process.env.HOST, // Default is localhost
-        port: process.env.PORT, // Defaults is 8080
-        open: true,
-        overlay: true // Enables errors to be shown directly in the browser window
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
-            title: "Webpack Development Boilerplate"
-        })
-    ] // ./plugins
+const parts = require("./webpack.parts");
+const commonConfig = merge([
+    {
+        plugins: [
+            new HtmlWebpackPlugin({
+                title: "Webpack Development Boilerplate"
+            })
+        ]
+    }
+]);
+const productionConfig = merge([]);
+const developmentConfig = merge([
+    parts.devServer({
+        // Customize host and/or port
+        host: process.env.HOST,
+        port: process.env.PORT
+    })
+]);
+
+module.exports = mode => {
+    if (mode === "production") {
+        return merge(commonConfig, productionConfig, { mode });
+    }
+    return merge(commonConfig, developmentConfig, { mode });
 };

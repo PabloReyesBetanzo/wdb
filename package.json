@@ -4,10 +4,9 @@
   "description": "Base configuration for webpack. To use in new proyects.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start":
-      "nodemon --watch webpack.config.js --exec \"webpack-dev-server --mode development\"",
-    "build": "webpack --mode production"
+      "nodemon --watch webpack.config.js --exec \"webpack-dev-server --env development\"",
+    "build": "webpack --env production"
   },
   "repository": {
     "type": "git",
@@ -24,6 +23,7 @@
     "nodemon": "^1.18.3",
     "webpack": "^4.16.2",
     "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.5"
+    "webpack-dev-server": "^3.1.5",
+    "webpack-merge": "^4.1.3"
   }
 }
