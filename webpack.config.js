@@ -10,16 +10,20 @@ const commonConfig = merge([
                 title: "Webpack Development Boilerplate"
             })
         ]
-    },
-    parts.loadSASS()
+    }
 ]);
-const productionConfig = merge([]);
+const productionConfig = merge([
+    parts.extractSass({
+        use: ["css-loader", "sass-loader"]
+    })
+]);
 const developmentConfig = merge([
     parts.devServer({
         // Customize host and/or port
         host: process.env.HOST,
         port: process.env.PORT
-    })
+    }),
+    parts.loadSass()
 ]);
 
 module.exports = mode => {

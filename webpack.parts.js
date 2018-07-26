@@ -1,6 +1,7 @@
-/*
-    SERVER
- */
+// Constants
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+// Server
 exports.devServer = ({ host, port } = {}) => ({
     devServer: {
         stats: "errors-only", // Display errors only.
@@ -11,10 +12,8 @@ exports.devServer = ({ host, port } = {}) => ({
     }
 });
 
-/*
-STYLES
-*/
-exports.loadSASS = ({ include, exclude } = {}) => ({
+// Styles
+exports.loadSass = ({ include, exclude } = {}) => ({
     module: {
         rules: [
             {
@@ -26,3 +25,22 @@ exports.loadSASS = ({ include, exclude } = {}) => ({
         ]
     }
 });
+exports.extractSass = ({ include, exclude, use = [] }) => {
+    // Extract Sass to a file
+    const plugin = new MiniCssExtractPlugin({
+        filename: "[name].css"
+    });
+    return {
+        module: {
+            rules: [
+                {
+                    test: /\.sass$/,
+                    include,
+                    exclude,
+                    use: [MiniCssExtractPlugin.loader].concat(use)
+                }
+            ]
+        },
+        plugins: [plugin]
+    };
+};
