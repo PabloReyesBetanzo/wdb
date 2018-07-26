@@ -4,8 +4,7 @@
   "description": "Base configuration for webpack. To use in new proyects.",
   "main": "index.js",
   "scripts": {
-    "start":
-      "nodemon --watch webpack.config.js --exec \"webpack-dev-server --env development\"",
+    "start": "nodemon --watch webpack.config.js --exec \"webpack-dev-server --env development\"",
     "build": "webpack --env production"
   },
   "repository": {
