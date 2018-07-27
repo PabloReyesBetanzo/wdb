@@ -3,7 +3,10 @@ const merge = require("webpack-merge");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 const glob = require("glob");
-const PATHS = { app: path.join(__dirname, "src") };
+const PATHS = {
+    app: path.join(__dirname, "src"),
+    build: path.join(__dirname, "dist")
+};
 
 // Config Parts
 const parts = require("./webpack.parts");
@@ -42,7 +45,9 @@ const productionConfig = merge([
                 }
             }
         }
-    }
+    },
+    parts.clean(PATHS.build),
+    parts.attachRevision()
 ]);
 const developmentConfig = merge([
     parts.devServer({

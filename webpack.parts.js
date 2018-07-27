@@ -1,5 +1,8 @@
 // Constants
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
+const webpack = require("webpack");
+const GitRevisionPlugin = require("git-revision-webpack-plugin");
 
 // Server
 exports.devServer = ({ host, port } = {}) => ({
@@ -89,4 +92,16 @@ exports.loadJavaScript = ({ include, exclude } = {}) => ({
 // SOURCEMAPS
 exports.generateSourceMaps = ({ type }) => ({
     devtool: type
+});
+// CLEANING UP
+exports.clean = path => ({
+    plugins: [new CleanWebpackPlugin([path])]
+});
+// ADD REVISIONS TO BUNDLED FILES
+exports.attachRevision = () => ({
+    plugins: [
+        new webpack.BannerPlugin({
+            banner: new GitRevisionPlugin().version()
+        })
+    ]
 });
