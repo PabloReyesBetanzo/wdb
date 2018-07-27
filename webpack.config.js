@@ -12,7 +12,9 @@ const commonConfig = merge([
                 title: "Webpack Development Boilerplate"
             })
         ]
-    }
+    },
+    parts.loadJavaScript({ include: PATHS.app, exclude: /node_modules/ });
+
 ]);
 const productionConfig = merge([
     parts.extractSass({
