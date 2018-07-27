@@ -1,11 +1,13 @@
 // Modules
 const merge = require("webpack-merge");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+
 // Config Parts
 const parts = require("./webpack.parts");
 const commonConfig = merge([
     {
         plugins: [
+            // TODO: Crear templates e incorporar FONTS e íCONOS a través de CDN
             new HtmlWebpackPlugin({
                 title: "Webpack Development Boilerplate"
             })
