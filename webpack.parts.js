@@ -86,3 +86,7 @@ exports.loadJavaScript = ({ include, exclude } = {}) => ({
         ]
     }
 });
+// SOURCEMAPS
+exports.generateSourceMaps = ({ type }) => ({
+    devtool: type
+});

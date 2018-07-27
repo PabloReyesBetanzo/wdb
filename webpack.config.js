@@ -1,6 +1,9 @@
 // Modules
 const merge = require("webpack-merge");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
+const glob = require("glob");
+const PATHS = { app: path.join(__dirname, "src") };
 
 // Config Parts
 const parts = require("./webpack.parts");
@@ -13,8 +16,7 @@ const commonConfig = merge([
             })
         ]
     },
-    parts.loadJavaScript({ include: PATHS.app, exclude: /node_modules/ });
-
+    parts.loadJavaScript({ include: PATHS.app, exclude: /node_modules/ })
 ]);
 const productionConfig = merge([
     parts.extractSass({
@@ -25,7 +27,22 @@ const productionConfig = merge([
             limit: 5000,
             name: "[name].[ext]"
         }
-    })
+    }),
+    parts.generateSourceMaps({ type: "source-map" }),
+    {
+        // Separa a un archivo aparte aquellos assets que sean estáticos.
+        optimization: {
+            splitChunks: {
+                cacheGroups: {
+                    commons: {
+                        test: /[\\/]node_modules[\\/]/,
+                        name: "vendor",
+                        chunks: "initial"
+                    }
+                }
+            }
+        }
+    }
 ]);
 const developmentConfig = merge([
     parts.devServer({
