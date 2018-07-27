@@ -12,12 +12,12 @@ exports.devServer = ({ host, port } = {}) => ({
     }
 });
 
-// Styles
+// Styles TODO: RETOMAR CAPITULO "ELIMINATING UNUSED CSS"
 exports.loadSass = ({ include, exclude } = {}) => ({
     module: {
         rules: [
             {
-                test: /\.sass$/,
+                test: /\.(css|sass)$/,
                 include,
                 exclude,
                 use: ["style-loader", "css-loader", "sass-loader"]
@@ -34,7 +34,7 @@ exports.extractSass = ({ include, exclude, use = [] }) => {
         module: {
             rules: [
                 {
-                    test: /\.sass$/,
+                    test: /\.(css|sass)$/,
                     include,
                     exclude,
                     use: [MiniCssExtractPlugin.loader].concat(use)
@@ -44,3 +44,32 @@ exports.extractSass = ({ include, exclude, use = [] }) => {
         plugins: [plugin]
     };
 };
+exports.autoprefix = () => ({
+    loader: "postcss-loader",
+    options: {
+        plugins: () => [require("autoprefixer")()]
+    }
+});
+// IMAGES
+exports.loadImages = ({ include, exclude, options } = {}) => ({
+    module: {
+        rules: [
+            {
+                test: /\.(png|jpg)$/,
+                include,
+                exclude,
+                use: [
+                    {
+                        loader: "url-loader",
+                        options
+                    },
+                    "image-webpack-loader" // Optimizar imágenes
+                ]
+            },
+            {
+                test: /\.svg$/,
+                use: ["file-loader", "image-webpack-loader"]
+            }
+        ]
+    }
+});
