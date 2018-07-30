@@ -34,7 +34,7 @@ exports.loadSass = ({ include, exclude } = {}) => ({
 exports.extractSass = ({ include, exclude, use = [] }) => {
     // Extract Sass to a file
     const plugin = new MiniCssExtractPlugin({
-        filename: "[name].min.css"
+        filename: "[name].min.[contenthash].css"
     });
     return {
         module: {

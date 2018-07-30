@@ -23,13 +23,19 @@ const commonConfig = merge([
     parts.loadJavaScript({ include: PATHS.app, exclude: /node_modules/ })
 ]);
 const productionConfig = merge([
+    {
+        output: {
+            chunkFilename: "[name].min.[chunkhash].js",
+            filename: "[name].min.[chunkhash].js"
+        }
+    },
     parts.extractSass({
         use: ["css-loader", parts.autoprefix(), "sass-loader"]
     }),
     parts.loadImages({
         options: {
             limit: 5000,
-            name: "[name].[ext]"
+            name: "[name].[hash].[ext]"
         }
     }),
     parts.generateSourceMaps({ type: "source-map" }),
