@@ -3,13 +3,16 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const webpack = require("webpack");
 const GitRevisionPlugin = require("git-revision-webpack-plugin");
+const UglifyWebpackPlugin = require("uglifyjs-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const cssnano = require("cssnano");
 
 // Server
 exports.devServer = ({ host, port } = {}) => ({
     devServer: {
         stats: "errors-only", // Display errors only.
         host, // Default is localhost
-        port, // Defaults is 8080
+        port, // Default is 8080
         open: true,
         overlay: true // Enables errors to be shown directly in the browser window
     }
@@ -31,7 +34,7 @@ exports.loadSass = ({ include, exclude } = {}) => ({
 exports.extractSass = ({ include, exclude, use = [] }) => {
     // Extract Sass to a file
     const plugin = new MiniCssExtractPlugin({
-        filename: "[name].css"
+        filename: "[name].min.css"
     });
     return {
         module: {
@@ -53,7 +56,16 @@ exports.autoprefix = () => ({
         plugins: () => [require("autoprefixer")()]
     }
 });
-// IMAGES
+exports.minifyCSS = ({ options }) => ({
+    plugins: [
+        new OptimizeCSSAssetsPlugin({
+            cssProcessor: cssnano,
+            cssProcessorOptions: options,
+            canPrint: false
+        })
+    ]
+});
+// Images
 exports.loadImages = ({ include, exclude, options } = {}) => ({
     module: {
         rules: [
@@ -76,7 +88,7 @@ exports.loadImages = ({ include, exclude, options } = {}) => ({
         ]
     }
 });
-// JAVASCRIPT
+// JavaScript
 exports.loadJavaScript = ({ include, exclude } = {}) => ({
     module: {
         rules: [
@@ -87,6 +99,11 @@ exports.loadJavaScript = ({ include, exclude } = {}) => ({
                 use: "babel-loader"
             }
         ]
+    }
+});
+exports.minifyJavaScript = () => ({
+    optimization: {
+        minimizer: [new UglifyWebpackPlugin({ sourceMap: true })]
     }
 });
 // SOURCEMAPS

@@ -1,5 +1,6 @@
 // Modules
 const merge = require("webpack-merge");
+const safeParser = require("postcss-safe-parser");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 const glob = require("glob");
@@ -47,7 +48,14 @@ const productionConfig = merge([
         }
     },
     parts.clean(PATHS.build),
-    parts.attachRevision()
+    parts.attachRevision(),
+    parts.minifyJavaScript(),
+    parts.minifyCSS({
+        options: {
+            discardComments: { removeAll: true },
+            parser: safeParser
+        }
+    })
 ]);
 const developmentConfig = merge([
     parts.devServer({
