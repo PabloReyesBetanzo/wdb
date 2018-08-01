@@ -1,3 +1,0 @@
-/*! a041119 */
-(window.webpackJsonp=window.webpackJsonp||[]).push([[0],{3:function(n,o,e){},5:function(n,o,e){"use strict";e.r(o);var t=e(0),l=e.n(t),c=e(1);e(3);document.body.appendChild(function(){var n=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"<h1>Hello world</h1>",o=document.createElement("div");return o.innerHTML=n,o}()),l()(function(){alert("Hello, World!"),console.log(c.a)})}},[[5,2,1]]]);
-//# sourceMappingURL=main.min.3175.js.map
