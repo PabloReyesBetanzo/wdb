@@ -1,3 +1,4 @@
+import $ from "jquery";
 import component from "./component";
 import "./main.sass";
 
