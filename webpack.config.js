@@ -25,8 +25,8 @@ const commonConfig = merge([
 const productionConfig = merge([
     {
         output: {
-            chunkFilename: "[name].min.[chunkhash].js",
-            filename: "[name].min.[chunkhash].js"
+            chunkFilename: "[name].min.[chunkhash:4].js",
+            filename: "[name].min.[chunkhash:4].js"
         }
     },
     parts.extractSass({
@@ -35,7 +35,7 @@ const productionConfig = merge([
     parts.loadImages({
         options: {
             limit: 5000,
-            name: "[name].[hash].[ext]"
+            name: "[name].[hash:4].[ext]"
         }
     }),
     parts.generateSourceMaps({ type: "source-map" }),
@@ -50,6 +50,10 @@ const productionConfig = merge([
                         chunks: "initial"
                     }
                 }
+            },
+            // Creación de manifiesto. Define qué archivos debe cargar webpack.
+            runtimeChunk: {
+                name: "manifest"
             }
         }
     },
