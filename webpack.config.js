@@ -38,6 +38,13 @@ const productionConfig = merge([
             name: "[name].[hash:4].[ext]"
         }
     }),
+    parts.loadFonts({
+        options: {
+            limit: 50000,
+            mimetype: "application/font-woff",
+            name: "./fonts/[name].[ext]"
+        }
+    }),
     parts.generateSourceMaps({ type: "source-map" }),
     {
         // Separa a un archivo aparte aquellos assets que sean estáticos.

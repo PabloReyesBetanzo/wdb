@@ -13,5 +13,7 @@ document.body.appendChild(component());
 
 $(function() {
     $("body").append(`<h1>Hello, World!</h1>`);
-    $("body").append(`<button class="btn btn-default">Hello, World!</button>`);
+    $("body").append(
+        `<button class="btn btn-default"><i class="fas fa-shopping-cart"></i> Hello, World!</button>`
+    );
 });
