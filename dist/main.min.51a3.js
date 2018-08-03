@@ -1,0 +1,3 @@
+/*! 77f1a1d */
+(window.webpackJsonp=window.webpackJsonp||[]).push([[0],{4:function(n,o,e){},6:function(n,o,e){"use strict";e.r(o);var t=e(0),d=e.n(t);e(1),e(3),e(4);document.body.appendChild(function(){var n=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"<h1>Hello world</h1>",o=document.createElement("div");return o.innerHTML=n,o}()),d()(function(){d()("body").append("<h1>Hello, World!</h1>"),d()("body").append('<button class="btn btn-default">Hello, World!</button>')})}},[[6,2,1]]]);
+//# sourceMappingURL=main.min.51a3.js.map

@@ -6,6 +6,7 @@ const GitRevisionPlugin = require("git-revision-webpack-plugin");
 const UglifyWebpackPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const cssnano = require("cssnano");
+const PurifyCSSPlugin = require("purifycss-webpack");
 
 // Server
 exports.devServer = ({ host, port } = {}) => ({
@@ -18,7 +19,7 @@ exports.devServer = ({ host, port } = {}) => ({
     }
 });
 
-// Styles TODO: RETOMAR CAPITULO "ELIMINATING UNUSED CSS"
+// Styles
 exports.loadSass = ({ include, exclude } = {}) => ({
     module: {
         rules: [
@@ -64,6 +65,10 @@ exports.minifyCSS = ({ options }) => ({
             canPrint: false
         })
     ]
+});
+exports.purifyCSS = ({ paths }) => ({
+    // Elimina CSS no utilizado en la versión final del css disminuyendo su peso.
+    plugins: [new PurifyCSSPlugin({ paths })]
 });
 // Images
 exports.loadImages = ({ include, exclude, options } = {}) => ({

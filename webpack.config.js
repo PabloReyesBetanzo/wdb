@@ -65,6 +65,9 @@ const productionConfig = merge([
             discardComments: { removeAll: true },
             parser: safeParser
         }
+    }),
+    parts.purifyCSS({
+        paths: glob.sync(`${PATHS.app}/**/*.js`, { nodir: true })
     })
 ]);
 const developmentConfig = merge([
