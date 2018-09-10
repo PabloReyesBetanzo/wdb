@@ -1,3 +1,3 @@
-/*! 98ce143 */
+/*! dfbc759 */
 (window.webpackJsonp=window.webpackJsonp||[]).push([[0],{4:function(n,o,t){},8:function(n,o,t){"use strict";t.r(o);var e=t(0),d=t.n(e);t(1),t(3),t(4);document.body.appendChild(function(){var n=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"<h1>Hello world</h1>",o=document.createElement("div");return o.innerHTML=n,o}()),d()(function(){d()("body").append("<h1>Hello, World!</h1>"),d()("body").append('<button class="btn btn-default"><i class="fas fa-shopping-cart"></i> Hello, World!</button>')})}},[[8,2,1]]]);
-//# sourceMappingURL=main.min.b603.js.map
+//# sourceMappingURL=main.min.e275.js.map

@@ -25,8 +25,8 @@ const commonConfig = merge([
 const productionConfig = merge([
     {
         output: {
-            chunkFilename: "[name].min.[chunkhash:4].js",
-            filename: "[name].min.[chunkhash:4].js"
+            chunkFilename: "./js/[name].min.[chunkhash:4].js",
+            filename: "./js/[name].min.[chunkhash:4].js"
         }
     },
     parts.extractSass({
@@ -35,7 +35,7 @@ const productionConfig = merge([
     parts.loadImages({
         options: {
             limit: 5000,
-            name: "[name].[hash:4].[ext]"
+            name: "./assets/[name].[hash:4].[ext]"
         }
     }),
     parts.loadFonts({
