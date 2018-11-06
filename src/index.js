@@ -11,9 +11,16 @@ import component from "./component";
 
 document.body.appendChild(component());
 
+// jQuery test
 $(function() {
-    $("body").append(`<h1>Hello, World!</h1>`);
-    $("body").append(
-        `<button class="btn btn-default"><i class="fas fa-shopping-cart"></i> Hello, World!</button>`
-    );
+    $("body").append(`
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <p>Prueba jQuery</p>
+                    <button class="btn btn-default"><i class="fas fa-shopping-cart"></i> Hello, World!</button>
+                </div>
+            </div>
+        </div>
+    `);
 });

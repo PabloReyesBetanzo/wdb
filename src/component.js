@@ -1,7 +1,13 @@
 export default (text = "<h1>Hello world</h1>") => {
-    const element = document.createElement("div");
+    const container = document.createElement("div");
+    container.className = "container";
 
-    element.innerHTML = text;
+    const row = document.createElement("div");
+    row.className = "row";
 
-    return element;
+    container.appendChild(row);
+
+    row.innerHTML = `<div class="col-12">test</div>`;
+
+    return container;
 };
