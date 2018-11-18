@@ -8,7 +8,7 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const cssnano = require("cssnano");
 const PurifyCSSPlugin = require("purifycss-webpack");
 
-// Server
+// Configuración Server
 exports.devServer = ({ host, port } = {}) => ({
     devServer: {
         stats: "errors-only", // Display errors only.

@@ -1,7 +1,8 @@
 // Modules
-const merge = require("webpack-merge");
-const safeParser = require("postcss-safe-parser");
+const merge             = require("webpack-merge");
+const safeParser        = require("postcss-safe-parser");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+// Constantes
 const path = require("path");
 const glob = require("glob");
 const PATHS = {
@@ -9,8 +10,9 @@ const PATHS = {
     build: path.join(__dirname, "dist")
 };
 
-// Config Parts
+// Configuración
 const parts = require("./webpack.parts");
+// Common config se ejecuta tanto en modo dev como en prod.
 const commonConfig = merge([
     {
         plugins: [
