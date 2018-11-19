@@ -8,14 +8,22 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const cssnano = require("cssnano");
 const PurifyCSSPlugin = require("purifycss-webpack");
 
-// Configuración Server
+/**
+ * * Configuración de Webpack Dev Server
+ * * devServer
+ * @ stats. "errors-only". Despliega sólo errores para reducir el outpur
+ * @ host: Por defecto Localhost.
+ * @ port: Por defecto 8080
+ * @ open: Abre la página en el navegador.
+ * @ overlay: Permite que los errores aparezcan directamente en la ventana del navegador.
+ */
 exports.devServer = ({ host, port } = {}) => ({
     devServer: {
-        stats: "errors-only", // Display errors only.
-        host, // Default is localhost
-        port, // Default is 8080
+        stats: "errors-only",
+        host,
+        port,
         open: true,
-        overlay: true // Enables errors to be shown directly in the browser window
+        overlay: true
     }
 });
 

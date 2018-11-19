@@ -1,6 +1,6 @@
 // Modules
-const merge             = require("webpack-merge");
-const safeParser        = require("postcss-safe-parser");
+const merge = require("webpack-merge");
+const safeParser = require("postcss-safe-parser");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 // Constantes
 const path = require("path");
