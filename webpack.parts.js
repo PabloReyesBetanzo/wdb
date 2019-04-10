@@ -143,7 +143,7 @@ exports.generateSourceMaps = ({ type }) => ({
 });
 // CLEANING UP
 exports.clean = path => ({
-    plugins: [new CleanWebpackPlugin([path])]
+    plugins: [new CleanWebpackPlugin()]
 });
 // ADD REVISIONS TO BUNDLED FILES
 exports.attachRevision = () => ({
